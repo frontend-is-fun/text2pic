@@ -1,4 +1,5 @@
 import { useRef } from 'react';
+import { toast } from 'sonner';
 
 export interface HeaderImageProps {
   // eslint-disable-next-line no-unused-vars
@@ -17,7 +18,7 @@ const HeaderImage = (props: HeaderImageProps) => {
     e.preventDefault();
     const { files } = e.dataTransfer;
     if (files.length > 0) {
-      props.onUpload(files[0]); // 调用 props.onUpload 将文件上传
+      onUpload(files[0]); // 调用 props.onUpload 将文件上传
     }
   };
 
@@ -32,9 +33,10 @@ const HeaderImage = (props: HeaderImageProps) => {
     if (e.target.files && e.target.files.length > 0) {
       const file = e.target.files[0];
       if (isAcceptedFileType(file)) {
-        props.onUpload(file); // 调用 props.onUpload 将文件上传
+        onUpload(file); // 调用 props.onUpload 将文件上传
       } else {
-        alert('只允许上传 PNG、JPG 和 GIF 格式的图片');
+        // toast('仅支持上传 PNG、JPG 和 GIF 格式的图片。');
+        toast.message('仅支持上传 PNG、JPG 和 GIF 格式的图片。');
       }
     }
   };

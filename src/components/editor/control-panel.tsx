@@ -21,7 +21,6 @@ const ControlPanel = (props: ControlPanelProps) => {
           id='airplane-mode'
           checked={isDarkMode}
           onCheckedChange={() => {
-            console.log('theme,', theme);
             setIsDarkMode(!isDarkMode);
             setTheme(isDarkMode ? 'light' : 'dark');
           }}
