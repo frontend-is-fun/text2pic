@@ -23,9 +23,19 @@ const HeaderImage = (props: HeaderImageProps) => {
 
   const fileInputRef = useRef<HTMLInputElement>(null);
 
+  const isAcceptedFileType = (file: File): boolean => {
+    const acceptedTypes = ['image/png', 'image/jpeg', 'image/gif'];
+    return acceptedTypes.includes(file.type);
+  };
+
   const handleFileChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     if (e.target.files && e.target.files.length > 0) {
-      props.onUpload(e.target.files[0]); // 调用 props.onUpload 将文件上传
+      const file = e.target.files[0];
+      if (isAcceptedFileType(file)) {
+        props.onUpload(file); // 调用 props.onUpload 将文件上传
+      } else {
+        alert('只允许上传 PNG、JPG 和 GIF 格式的图片');
+      }
     }
   };
 
