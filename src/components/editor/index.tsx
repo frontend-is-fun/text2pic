@@ -10,6 +10,9 @@ import 'react-quill/dist/quill.bubble.css';
 import { HeaderImage } from '@/components/editor/header-image';
 import { ControlPanel } from '@/components/editor/control-panel';
 
+// dom to image
+import domtoimage from 'dom-to-image-more';
+
 export interface EditorComponentProps {
   note: NoteProps;
   onToggleFooter: () => void;
@@ -49,6 +52,17 @@ const EditorComponent = (props: EditorComponentProps) => {
 
   const handleDownloadImage = () => {
     console.log('download image');
+    const node = document.getElementById('poster-editor');
+    if (!node) {
+      return;
+    }
+    domtoimage.toPng(node)
+      .then((dataUrl) => {
+        const link = document.createElement('a');
+        link.download = 'poster.png';
+        link.href = dataUrl;
+        link.click();
+      });
   };
 
   return (

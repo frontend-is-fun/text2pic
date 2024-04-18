@@ -34,8 +34,8 @@ const ControlPanel = (props: ControlPanelProps) => {
       </div> */}
       <div className='flex items-center space-x-2'>
         <Button
-          variant='outline'
           onClick={onDownloadImage}
+          className='px-8'
         >
           下载图片
         </Button>
