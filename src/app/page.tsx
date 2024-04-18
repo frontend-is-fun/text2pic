@@ -11,7 +11,7 @@ import { FooterComponent } from '@/components/footer';
 
 export default function Home() {
   const [note, setNote] = useState<NoteProps>({
-    title: 'this is title',
+    title: '标题',
     content: '',
     showDate: false,
     date: '',
@@ -22,13 +22,6 @@ export default function Home() {
     footer: '',
     theme: 'default',
   } as NoteProps);
-
-  const handleToggleDarkMode = () => {
-    setNote({
-      ...note,
-      isDarkMode: !note.isDarkMode,
-    });
-  };
 
   const handleToggleFooter = () => {
     setNote({
@@ -65,20 +58,33 @@ export default function Home() {
     });
   };
 
+  const onToggleShowDate = () => {
+    const currentDate = new Date();
+    const date = currentDate.toLocaleDateString();
+    setNote({
+      ...note,
+      showDate: !note.showDate,
+      date,
+    });
+  };
+
   return (
-    <main className='flex min-h-screen flex-col items-center justify-start p-0'>
-      <HeaderComponent />
-      <EditorComponent
-        note={note}
-        onToggleDarkMode={handleToggleDarkMode}
-        onToggleFooter={handleToggleFooter}
-        showHeaderImage={note.showHeaderImage}
-        onToggleHeaderImage={handleToggleHeaderImage}
-        setHeaderImage={onSetHeaderImage}
-        onChangeTitle={onChangeTitle}
-        onChangeContent={onChangeContent}
-      />
-      <FooterComponent />
-    </main>
+    <div className='flex min-h-screen flex-col items-center justify-start p-0 bg-slate-50 w-full'>
+      <main className=' max-w-[720px] w-full'>
+        <HeaderComponent />
+        <EditorComponent
+          note={note}
+          onToggleFooter={handleToggleFooter}
+          showHeaderImage={note.showHeaderImage}
+          onToggleHeaderImage={handleToggleHeaderImage}
+          setHeaderImage={onSetHeaderImage}
+          onChangeTitle={onChangeTitle}
+          onChangeContent={onChangeContent}
+          onToggleShowDate={onToggleShowDate}
+        />
+        <FooterComponent />
+      </main>
+    </div>
+
   );
 }

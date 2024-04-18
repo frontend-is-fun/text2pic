@@ -1,7 +1,7 @@
 import Image from 'next/image';
 
 const HeaderComponent: React.FC = () => (
-  <div className='w-full h-16 flex flex-row justify-start items-center px-4'>
+  <div className='w-full h-16 flex flex-row justify-start items-center px-4 mb-8'>
     <div>
       <Image
         src='/logo.png'
