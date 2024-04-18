@@ -58,14 +58,23 @@ export default function Home() {
     });
   };
 
+  const onSetHeaderImage = (image: string) => {
+    setNote({
+      ...note,
+      headerImage: image,
+    });
+  };
+
   return (
-    <main className='flex min-h-screen flex-col items-center justify-between p-0'>
+    <main className='flex min-h-screen flex-col items-center justify-start p-0'>
       <HeaderComponent />
       <EditorComponent
         note={note}
         onToggleDarkMode={handleToggleDarkMode}
         onToggleFooter={handleToggleFooter}
+        showHeaderImage={note.showHeaderImage}
         onToggleHeaderImage={handleToggleHeaderImage}
+        setHeaderImage={onSetHeaderImage}
         onChangeTitle={onChangeTitle}
         onChangeContent={onChangeContent}
       />

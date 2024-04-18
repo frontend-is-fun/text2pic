@@ -4,7 +4,7 @@ export interface NoteProps {
   showDate: boolean;
   date?: string;
   showHeaderImage: boolean;
-  headerImage?: string;
+  headerImage: string;
   isDarkMode: boolean;
   showFooter: boolean;
   footer?: string;
