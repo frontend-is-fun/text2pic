@@ -3,7 +3,6 @@
 import type { NoteProps } from '@/typings/note.typing';
 import ReactQuill from 'react-quill';
 import 'react-quill/dist/quill.bubble.css';
-import { useEffect } from 'react';
 
 export interface EditorComponentProps {
   note: NoteProps;
