@@ -51,6 +51,13 @@ export default function Home() {
     });
   };
 
+  const onChangeContent = (content: string) => {
+    setNote({
+      ...note,
+      content,
+    });
+  };
+
   return (
     <main className='flex min-h-screen flex-col items-center justify-between p-0'>
       <HeaderComponent />
@@ -60,6 +67,7 @@ export default function Home() {
         onToggleFooter={handleToggleFooter}
         onToggleHeaderImage={handleToggleHeaderImage}
         onChangeTitle={onChangeTitle}
+        onChangeContent={onChangeContent}
       />
       <FooterComponent />
     </main>
