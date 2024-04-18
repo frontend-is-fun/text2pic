@@ -47,7 +47,9 @@ const EditorComponent = (props: EditorComponentProps) => {
     reader.readAsDataURL(file);
   };
 
-  const showDate = note.showDate ? 'block' : 'hidden';
+  const handleDownloadImage = () => {
+    console.log('download image');
+  };
 
   return (
     <div className='w-full'>
@@ -92,6 +94,7 @@ const EditorComponent = (props: EditorComponentProps) => {
       <ControlPanel
         onToggleHeaderImage={onToggleHeaderImage}
         onToggleShowDate={onToggleShowDate}
+        onDownloadImage={handleDownloadImage}
       />
     </div>
 
