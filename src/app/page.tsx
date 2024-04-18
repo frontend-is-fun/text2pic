@@ -11,7 +11,7 @@ import { FooterComponent } from '@/components/footer';
 
 export default function Home() {
   const [note, setNote] = useState<NoteProps>({
-    title: '',
+    title: 'this is title',
     content: '',
     showDate: false,
     date: '',
@@ -44,15 +44,22 @@ export default function Home() {
     });
   };
 
+  const onChangeTitle = (title: string) => {
+    setNote({
+      ...note,
+      title,
+    });
+  };
+
   return (
     <main className='flex min-h-screen flex-col items-center justify-between p-0'>
       <HeaderComponent />
-      <h1 className='text-4xl font-bold'>Welcome to Text2Pic!</h1>
       <EditorComponent
         note={note}
         onToggleDarkMode={handleToggleDarkMode}
         onToggleFooter={handleToggleFooter}
         onToggleHeaderImage={handleToggleHeaderImage}
+        onChangeTitle={onChangeTitle}
       />
       <FooterComponent />
     </main>

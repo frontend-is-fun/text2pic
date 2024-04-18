@@ -1,5 +1,5 @@
 export interface NoteProps {
-  title: string;
+  title?: string;
   content: string;
   showDate: boolean;
   date?: string;
