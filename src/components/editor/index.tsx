@@ -1,4 +1,9 @@
+'use client';
+
 import type { NoteProps } from '@/typings/note.typing';
+import ReactQuill from 'react-quill';
+import 'react-quill/dist/quill.bubble.css';
+import { useEffect } from 'react';
 
 export interface EditorComponentProps {
   note: NoteProps;
@@ -23,7 +28,7 @@ const EditorComponent = (props: EditorComponentProps) => {
 
   return (
     <div
-      id='editor'
+      id='poster-editor'
       className='bg-white w-full max-w-96'
     >
       <input
@@ -33,10 +38,12 @@ const EditorComponent = (props: EditorComponentProps) => {
         onChange={(e) => onChangeTitle(e.target.value)}
         className='w-full p-2 text-xl'
       />
-      <textarea
+      <ReactQuill
         value={note.content}
-        onChange={(e) => onChangeContent(e.target.value)}
-        className='w-full p-2 min-h-48'
+        onChange={(value) => onChangeContent(value)}
+        theme='bubble'
+        modules={{
+        }}
       />
     </div>
   );
